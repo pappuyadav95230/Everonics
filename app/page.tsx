@@ -1,65 +1,104 @@
-import Image from "next/image";
+import { NextPage } from "next";
+import { RefreshCw, Globe, Smartphone } from "lucide-react";
+import React from "react";
+import Aboutsection from "@/compoents/AboutSection";
 
-export default function Home() {
+// --- Type Definitions for Services (Unchanged) ---
+interface Service {
+  name: string;
+  description: string;
+  icon: React.ElementType<{ className?: string }>;
+}
+
+const servicesData: Service[] = [
+  {
+    name: "Web & E-Commerce Solutions",
+    description:
+      "Responsive, visually appealing, and SEO-friendly websites built for performance and scalability, including robust e-commerce platforms.",
+    icon: Globe,
+  },
+  {
+    name: "Mobile Application Development",
+    description:
+      "Designing and developing native and cross-platform mobile apps (iOS/Android) to establish a powerful and engaging mobile presence.",
+    icon: Smartphone,
+  },
+  {
+    name: "Strategic Digital Marketing",
+    description:
+      "Data-driven digital marketing, including SEO, social media, and email campaigns, focused on generating high-quality leads and conversions.",
+    icon: RefreshCw,
+  },
+];
+
+// ------------------------------------
+// COMPONENTS
+// ------------------------------------
+
+/**
+ * Hero Section Component - With Bright Orange Gradient Background
+ */
+const HeroSection: React.FC = () => (
+  <section
+    id="home"
+    // Apply a bright, custom gradient: from a light color, through the custom orange, to a light color.
+    // Tailwind classes: bg-gradient-to-r (right)
+    className="pt-40 pb-32 sm:pt-52 sm:pb-40 relative overflow-hidden min-h-screen flex items-center 
+               bg-linear-to-br from-brand-white via-[#f26b36] to-brand-gray-light" // White -> Orange/30% -> Light Gray
+  >
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      {/* Main Heading - Text Color set to brand-black for contrast against the light/orange background */}
+      <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] font-extrabold tracking-tight text-brand-black leading-tight">
+        Driving Business Growth with{" "}
+        {/* Accent Color: Custom Orange (#f26b36) - Used as a bright highlight */}
+        <span className="text-white">Innovative IT Solutions</span>
+      </h1>
+
+      {/* Subheading/Mission Statement - Dark gray for readability */}
+      <p className="mt-8 text-xl sm:text-2xl text-brand-gray-dark max-w-6xl mx-auto">
+        At Everonic Solutions, we help businesses grow by combining smart
+        technology with practical solutions. Our IT services are designed to
+        simplify operations, improve efficiency, and support your business
+        goals.
+      </p>
+
+      {/* Call to Action Buttons */}
+      <div className="mt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        {/* Primary CTA (Filled - Custom Orange) - Text remains black for contrast */}
+        <a
+          href="#services"
+          className="inline-flex items-center justify-center rounded-full border border-transparent bg-white px-10 py-3 text-base font-bold text-brand-black shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-[1.02]"
+        >
+          Learn more
+        </a>
+
+        {/* Secondary CTA (Outlined - Black/Dark Gray) - Outline in a dark color for better visibility on a light background */}
+        <a
+          href="#contact"
+          className="inline-flex items-center justify-center rounded-full border-2 border-brand-black/50 px-10 py-3 text-base font-semibold text-brand-black hover:bg-brand-black hover:text-brand-white transition duration-300"
+        >
+          Start a Project
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+// ------------------------------------
+// MAIN PAGE COMPONENT
+// ------------------------------------
+const HomePage: NextPage = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    // Set a default background to ensure the page looks consistent
+    <div className="min-h-screen antialiased bg-brand-white">
+      <main>
+        {/* 1. Hero Section with Bright Gradient */}
+        <HeroSection />
+        
       </main>
+      <Aboutsection />
     </div>
   );
-}
+};
+
+export default HomePage;
