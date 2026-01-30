@@ -37,48 +37,53 @@ const servicesData: Service[] = [
 // ------------------------------------
 
 /**
- * Hero Section Component - With Bright Orange Gradient Background
+ * Hero Section Component - Professional Design with Brand Orange Background
  */
 const HeroSection: React.FC = () => (
   <section
     id="home"
-    // Apply a bright, custom gradient: from a light color, through the custom orange, to a light color.
-    // Tailwind classes: bg-gradient-to-r (right)
-    className="pt-40 pb-32 sm:pt-52 sm:pb-40 relative overflow-hidden min-h-screen flex items-center 
-               bg-linear-to-br from-brand-white via-[#f26b36] to-brand-gray-light" // White -> Orange/30% -> Light Gray
+    className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-screen flex items-center
+               bg-gradient-to-br from-brand-orange via-brand-orange/90 to-[#e55a2b]"
   >
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      {/* Main Heading - Text Color set to brand-black for contrast against the light/orange background */}
-      <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] font-extrabold tracking-tight text-brand-black leading-tight">
-        Driving Business Growth with{" "}
-        {/* Accent Color: Custom Orange (#f26b36) - Used as a bright highlight */}
-        <span className="text-white">Innovative IT Solutions</span>
+    {/* Enhanced Background Elements for Professional Depth */}
+    <div className="absolute inset-0 z-0">
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/15 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-t from-white/10 to-transparent rounded-t-full"></div>
+      <div className="absolute top-20 left-10 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
+    </div>
+
+    <div className="mx-auto max-w-8xl px-6 sm:px-8 lg:px-12 text-center relative z-10">
+      {/* Main Heading - Enhanced Width and Professional Typography */}
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[6.5rem] font-black tracking-tight text-white leading-none mb-6 drop-shadow-lg">
+        Driving Business{" "}
+        <span className="block text-gray-800">Growth with</span>{" "}
+        <span className="text-white/90 font-black">Innovative IT</span>{" "}
+        <span className="text-white/80">Solutions</span>
       </h1>
 
-      {/* Subheading/Mission Statement - Dark gray for readability */}
-      <p className="mt-8 text-xl sm:text-2xl text-brand-gray-dark max-w-6xl mx-auto">
-        At Everonic Solutions, we help businesses grow by combining smart
-        technology with practical solutions. Our IT services are designed to
-        simplify operations, improve efficiency, and support your business
-        goals.
+      {/* Subheading - Enhanced Width and Professional Copy */}
+      <p className="mt-8 text-xl sm:text-2xl lg:text-3xl text-gray-800 max-w-7xl mx-auto leading-relaxed font-medium drop-shadow-md">
+        At Everonic Solutions, we transform businesses through cutting-edge
+        technology and strategic digital innovation.
       </p>
 
-      {/* Call to Action Buttons */}
-      <div className="mt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-        {/* Primary CTA (Filled - Custom Orange) - Text remains black for contrast */}
+      {/* Call to Action Buttons - Enhanced Professional Design */}
+      <div className="mt-16 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
+        {/* Primary CTA - Professional White Button with Shadow */}
         <a
           href="#services"
-          className="inline-flex items-center justify-center rounded-full border border-transparent bg-white px-10 py-3 text-base font-bold text-brand-black shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-[1.02]"
+          className="inline-flex items-center justify-center rounded-2xl border border-transparent bg-white px-12 py-5 text-lg font-bold text-brand-orange shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-brand-orange hover:text-white"
         >
-          Learn more
+          Explore Our Services
         </a>
 
-        {/* Secondary CTA (Outlined - Black/Dark Gray) - Outline in a dark color for better visibility on a light background */}
+        {/* Secondary CTA - Professional Outline Button */}
         <a
           href="#contact"
-          className="inline-flex items-center justify-center rounded-full border-2 border-brand-black/50 px-10 py-3 text-base font-semibold text-brand-black hover:bg-brand-black hover:text-brand-white transition duration-300"
+          className="inline-flex items-center justify-center rounded-2xl border-2 border-white px-12 py-5 text-lg font-bold text-white hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1"
         >
-          Start a Project
+          Start Your Project
         </a>
       </div>
     </div>
@@ -95,7 +100,6 @@ const HomePage: NextPage = () => {
       <main>
         {/* 1. Hero Section with Bright Gradient */}
         <HeroSection />
-        
       </main>
       <Aboutsection />
 

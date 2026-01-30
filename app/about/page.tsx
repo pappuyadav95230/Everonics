@@ -11,86 +11,123 @@ import {
   Smile,
   Users,
   Headset,
+  Globe,
+  Smartphone,
 } from "lucide-react";
 
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-white via-[#f26b36] to-gray-200"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#f26b36_1px,transparent_1px)] [background-size:16px_16px] opacity-5"></div>
+      {/* Hero Section - Enhanced Professional Design */}
+      <section className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-screen flex items-center">
+        {/* Professional Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-orange via-brand-orange/90 to-[#e55a2b]"></div>
+
+        {/* Enhanced Background Elements for Professional Depth */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/15 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-t from-white/10 to-transparent rounded-t-full"></div>
+          <div className="absolute top-20 left-10 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto text-center">
-            {/* Main Heading */}
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight"
-              style={{ fontFamily: "'Noto Serif', serif" }}
-            >
-              <span className="block text-white mb-3 drop-shadow-lg">
-                <span className="relative inline-block">
-                  We are an
-                  <span className="text-[#ffd2c1] font-extrabold relative">
-                    award-winning
-                    <svg
-                      className="absolute bottom-0 left-0 w-full h-1 fill-[#ffd2c1]/50"
-                      viewBox="0 0 100 10"
-                      preserveAspectRatio="none"
-                    >
-                      <path d="M0,5 Q50,0 100,5 Q50,10 0,5 Z" />
-                    </svg>
-                  </span>
-                </span>
-              </span>
-              <span className="block text-white font-light drop-shadow-lg">
-                helping businesses{" "}
-                <span className="text-[#ffd2c1] font-semibold relative">
-                  thrive
-                  <svg
-                    className="absolute bottom-0 left-0 w-full h-1 fill-[#ffd2c1]/50"
-                    viewBox="0 0 100 10"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M0,5 Q50,0 100,5 Q50,10 0,5 Z" />
-                  </svg>
-                </span>
-                .
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+          <div className="max-w-8xl mx-auto text-center">
+            {/* Main Heading - Two Line Layout */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-tight mb-8 drop-shadow-lg">
+              <span className="block mb-3">We are an award-winning</span>
+              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-black">
+                consultancy agency
               </span>
             </h1>
 
-            {/* Subheading */}
-            <div className="text-lg md:text-xl text-white max-w-4xl mx-auto mb-10 leading-relaxed drop-shadow-lg">
-              <span className="relative">
-                At Everonic Solutions, we pride ourselves on being an
-                <span className="font-semibold text-[#ffd2c1]">
-                  {" "}
-                  award-winning consultancy agency
-                </span>{" "}
-                dedicated to empowering businesses with{" "}
-                <span className="font-medium text-[#ffd2c1]">
-                  strategic insights
-                </span>{" "}
-                and{" "}
-                <span className="font-medium text-[#ffd2c1]">
-                  innovative solutions
-                </span>
-                .
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ffd2c1]/30 to-transparent"></div>
-              </span>
-            </div>
+            {/* Subheading - Enhanced Professional Copy */}
+            <p className="mt-8 text-xl sm:text-2xl lg:text-3xl text-white/95 max-w-7xl mx-auto leading-relaxed font-medium drop-shadow-md">
+              At Everonic Solutions, we empower businesses through strategic
+              insights and innovative solutions that drive sustainable growth
+              and transform digital landscapes.
+            </p>
 
-            {/* Decorative element */}
-            <div className="flex justify-center mb-10">
-              <div className="h-1 w-24 bg-gradient-to-r from-[#f26b36] to-black rounded-full"></div>
+            {/* Call to Action Buttons - Enhanced Professional Design */}
+            <div className="mt-16 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
+              {/* Primary CTA - Professional White Button with Shadow */}
+              <a
+                href="#about-section"
+                className="inline-flex items-center justify-center rounded-2xl border border-transparent bg-white px-12 py-5 text-lg font-bold text-brand-orange shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-brand-orange hover:text-white"
+              >
+                Discover Our Story
+              </a>
+
+              {/* Secondary CTA - Professional Outline Button */}
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-white px-12 py-5 text-lg font-bold text-white hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1"
+              >
+                Get In Touch
+              </a>
             </div>
           </div>
         </div>
       </section>
+      {/* Trust Indicators - Professional Card Design */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {/* Experience Card */}
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+                </div>
+                <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
+                  Experience
+                </h3>
+                <p className="text-center text-gray-700 font-semibold text-2xl">
+                  15+ Years
+                </p>
+              </div>
 
+              {/* Clients Card */}
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+                </div>
+                <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
+                  Clients
+                </h3>
+                <p className="text-center text-gray-700 font-semibold text-2xl">
+                  200+
+                </p>
+              </div>
+
+              {/* Recognition Card */}
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+                </div>
+                <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
+                  Recognition
+                </h3>
+                <p className="text-center text-gray-700 font-semibold text-2xl">
+                  Industry
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+                </div>
+                <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
+                  Products
+                </h3>
+                <p className="text-center text-gray-700 font-semibold text-2xl">
+                  10+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* About Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
