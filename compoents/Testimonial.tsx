@@ -137,7 +137,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
 
                   {/* Quote Text */}
                   <p
-                    className="text-gray-700 leading-relaxed text-lg mb-8 font-medium"
+                    className="text-gray-700 leading-relaxed text-lg mb-8 font-medium text-justify"
                     dangerouslySetInnerHTML={{ __html: testimonial.quote }}
                   ></p>
 

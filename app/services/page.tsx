@@ -1,56 +1,77 @@
 "use client";
 
 import React from "react";
-import {
-  FaAndroid,
-  FaCode,
-  FaChartLine,
-  FaChartArea,
-  FaBalanceScale,
-  FaHouseDamage,
-} from "react-icons/fa";
-
 import Image from "next/image";
-
 import Testimonial from "../../compoents/Testimonial";
+import OurServices from "../../compoents/OurServices";
 
 const ServicePage = () => {
   const services = [
     {
-      icon: <FaAndroid className="h-8 w-8" />,
       title: "Mobile Applications",
       description:
         "With the booming mobile/smart phone industry, your presence on a mobile phone is just as essential and we make that happen by creating beautifully designed mobile applications that offer a friendly user experience for your customers.",
+      features: [
+        "iOS & Android Development",
+        "User-Centered Design",
+        "Cross-Platform Solutions",
+        "App Store Optimization",
+      ],
     },
     {
-      icon: <FaCode className="h-8 w-8" />,
       title: "Web & Social Applications",
       description:
         "Build a powerful online presence with our comprehensive web development services. Whether you need a stunning website or a robust e-commerce platform, Everonic Solutions delivers responsive, visually appealing, and SEO-friendly websites that drive engagement and conversions.",
+      features: [
+        "Full-Stack Development",
+        "E-commerce Solutions",
+        "Content Management Systems",
+        "API Integration",
+      ],
     },
     {
-      icon: <FaChartLine className="h-8 w-8" />,
       title: "Responsive Web Design",
       description:
         "Responsive web design allows your website will look great and function flawlessly to adapt an optimal experience on any device like desktop computer, laptop, tablet or smartphone.",
+      features: [
+        "Mobile-First Approach",
+        "Cross-Browser Compatibility",
+        "Performance Optimization",
+        "Accessibility Standards",
+      ],
     },
     {
-      icon: <FaChartArea className="h-8 w-8" />,
       title: "Search Engine Optimization",
       description:
         "Enhance your visibility and attract more organic traffic with our SEO expertise. Our team uses proven strategies and the latest tools to optimize your website, improve your search rankings, and ensure your business reaches its target audience effectively.",
+      features: [
+        "Keyword Research",
+        "On-Page Optimization",
+        "Link Building",
+        "Performance Analytics",
+      ],
     },
     {
-      icon: <FaBalanceScale className="h-8 w-8" />,
       title: "Digital Marketing",
       description:
         "Our digital marketing services include search engine optimization, social media marketing, email marketing, and more. We use a data-driven approach to create effective marketing campaigns that generate leads and drive conversions for our clients.",
+      features: [
+        "Social Media Strategy",
+        "Email Marketing Campaigns",
+        "PPC Advertising",
+        "Analytics & Reporting",
+      ],
     },
     {
-      icon: <FaHouseDamage className="h-8 w-8" />,
       title: "Internship and Training",
       description:
         "At Everonic Solutions, we believe in nurturing talent and providing opportunities for growth and development. Our internship and training programs are designed to equip aspiring professionals with the skills, knowledge, and hands-on experience needed to succeed in today's competitive job market.",
+      features: [
+        "Hands-on Projects",
+        "Industry Mentorship",
+        "Skill Development",
+        "Career Guidance",
+      ],
     },
   ];
 
@@ -143,58 +164,11 @@ const ServicePage = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-transparent">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-8xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="service-item bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="service-icon w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#f26b36] to-black group-hover:from-black group-hover:to-[#f26b36] transition-all duration-300">
-                        <div className="text-white">{service.icon}</div>
-                      </div>
-                      <a
-                        href="#"
-                        className="service-btn w-12 h-12 rounded-lg flex items-center justify-center bg-gray-100 hover:bg-[#f26b36] transition-all duration-300 group-hover:bg-[#f26b36]"
-                      >
-                        <svg
-                          className="h-5 w-5 text-gray-600 group-hover:text-white transition-colors duration-300"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          ></path>
-                        </svg>
-                      </a>
-                    </div>
-                    <div className="p-2">
-                      <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#f26b36] transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed text-justify">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <OurServices
+        services={services}
+        title="Our Services"
+        subtitle="Comprehensive digital solutions tailored to drive your business forward"
+      />
       <Testimonial
         testimonials={testimonials}
         title="What our clients say about our services"
