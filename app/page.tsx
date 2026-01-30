@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => (
   <section
     id="home"
     className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-screen flex items-center
-               bg-gradient-to-br from-brand-orange via-brand-orange/90 to-[#e55a2b]"
+               bg-gradient-to-r from-[#f26b36] to-orange-600"
   >
     {/* Enhanced Background Elements for Professional Depth */}
     <div className="absolute inset-0 z-0">

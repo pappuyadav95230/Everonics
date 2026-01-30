@@ -10,20 +10,27 @@ const BRAND_ORANGE = "#f26b36"; // Accent Color
 const BRAND_BLACK_TEXT = "#1A1A1A"; // Main Text Color
 const BRAND_GRAY_HOVER = "#F0F0F0"; // Light Gray Hover background
 
-// --- Custom Nav Item Data (Unchanged) ---
-const navItems = [
+// Define the nav item type to support dropdowns
+type NavItem = {
+  name: string;
+  href: string;
+  dropdown?: Array<{ name: string; href: string }>;
+};
+
+// --- Custom Nav Item Data ---
+const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
   {
-    name: "Services",
-    href: "/services", // Grouping link
+    name: "Products",
+    href: "/products",
     dropdown: [
-      { name: "Web Solutions", href: "/services/web" },
-      { name: "Mobile Apps", href: "/services/mobile" },
-      { name: "Digital Marketing", href: "/services/marketing" },
+      { name: "Location Tracker", href: "/products/location-tracker" },
+      { name: "Road Transit", href: "/products/road-transit" },
+      { name: "OBEO", href: "/products/obeo" },
     ],
   },
-  { name: "Products", href: "/products" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -41,16 +48,16 @@ const Navbar = () => {
     if (pathname === parentHref && parentHref === "/") return true;
     if (pathname.startsWith(parentHref) && parentHref !== "/") return true;
 
-    const servicesItem = navItems.find((item) => item.name === "Services");
-    if (servicesItem && servicesItem.dropdown) {
-      return servicesItem.dropdown.some((subItem) => pathname === subItem.href);
+    const productsItem = navItems.find((item) => item.name === "Products");
+    if (productsItem && productsItem.dropdown) {
+      return productsItem.dropdown.some((subItem) => pathname === subItem.href);
     }
     return false;
   };
 
   // --- Mobile and Desktop Nav Link Component ---
   const NavLink: React.FC<{
-    item: (typeof navItems)[0];
+    item: NavItem;
     isMobile: boolean;
   }> = ({ item, isMobile }) => {
     const isActive = isParentActive(item.href) || pathname === item.href;
@@ -58,9 +65,9 @@ const Navbar = () => {
 
     // Base classes for a nav link
     const baseClasses = `transition duration-300 font-bold  whitespace-nowrap text-center px-4 py-2 ${
-      isActive ?
-        `text-[${BRAND_ORANGE}] bg-[${BRAND_GRAY_HOVER}] rounded-full`
-      : `text-[${BRAND_BLACK_TEXT}] hover:text-[${BRAND_ORANGE}] hover:bg-[${BRAND_GRAY_HOVER}] rounded-full`
+      isActive
+        ? `text-[${BRAND_ORANGE}] bg-[${BRAND_GRAY_HOVER}] rounded-full`
+        : `text-[${BRAND_BLACK_TEXT}] hover:text-[${BRAND_ORANGE}] hover:bg-[${BRAND_GRAY_HOVER}] rounded-full`
     }`;
 
     // Dropdown Logic
@@ -74,21 +81,24 @@ const Navbar = () => {
               }
             }}
             // Link button (does not take full container width)
-            className={`flex items-center justify-center ${isMobile ? "py-2 w-full" : "py-0"} ${baseClasses}`}
+            className={`flex items-center justify-center ${
+              isMobile ? "py-2 w-full" : "py-0"
+            } ${baseClasses}`}
             style={{ color: isActive ? BRAND_ORANGE : BRAND_BLACK_TEXT }}
             onMouseEnter={() => !isMobile && setDropdownOpen(true)}
             onMouseLeave={() => !isMobile && setDropdownOpen(false)}
           >
             {item.name}
             <FiChevronDown
-              className={`ml-1 transition-transform ${isDropdown && (dropdownOpen || !isMobile) ? "rotate-180" : ""}`}
+              className={`ml-1 transition-transform ${
+                isDropdown && (dropdownOpen || !isMobile) ? "rotate-180" : ""
+              }`}
             />
           </button>
           {/* DROPDOWN CONTENT */}
           <AnimatePresence>
-            {
-              isMobile ?
-                // Mobile Dropdown (Indented, inside the mobile menu)
+            {isMobile
+              ? // Mobile Dropdown (Indented, inside the mobile menu)
                 isOpen &&
                 dropdownOpen &&
                 item.dropdown && (
@@ -104,9 +114,9 @@ const Navbar = () => {
                         key={subItem.name}
                         href={subItem.href}
                         className={`block text-sm font-bold transition-colors duration-300 py-1.5 ${
-                          pathname === subItem.href ?
-                            `text-[${BRAND_ORANGE}]`
-                          : `text-[${BRAND_BLACK_TEXT}]/70 hover:text-[${BRAND_ORANGE}]`
+                          pathname === subItem.href
+                            ? `text-[${BRAND_ORANGE}]`
+                            : `text-[${BRAND_BLACK_TEXT}]/70 hover:text-[${BRAND_ORANGE}]`
                         }`}
                         onClick={closeAllMenus}
                       >
@@ -115,8 +125,8 @@ const Navbar = () => {
                     ))}
                   </motion.div>
                 )
-                // Desktop Dropdown (OUTSIDE the nav pill)
-              : dropdownOpen &&
+              : // Desktop Dropdown (OUTSIDE the nav pill)
+                dropdownOpen &&
                 item.dropdown && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -131,10 +141,10 @@ const Navbar = () => {
                       <Link
                         key={subItem.name}
                         href={subItem.href}
-                       className={`block py-2 text-center text-sm font-bold text-[${BRAND_BLACK_TEXT}] hover:bg-gray-100 hover:text-[${BRAND_ORANGE}] transition-colors ${
-                          pathname === subItem.href ?
-                            `bg-gray-100 text-[${BRAND_ORANGE}]`
-                          : ""
+                        className={`block py-2 text-center text-sm font-bold text-[${BRAND_BLACK_TEXT}] hover:bg-gray-100 hover:text-[${BRAND_ORANGE}] transition-colors ${
+                          pathname === subItem.href
+                            ? `bg-gray-100 text-[${BRAND_ORANGE}]`
+                            : ""
                         }`}
                         onClick={closeAllMenus}
                       >
@@ -142,9 +152,7 @@ const Navbar = () => {
                       </Link>
                     ))}
                   </motion.div>
-                )
-
-            }
+                )}
           </AnimatePresence>
         </div>
       );
@@ -179,7 +187,7 @@ const Navbar = () => {
           // Inner container for the "floating" and rounded appearance
           // >>>>>>>>>>>>>>>>>>>> FIX APPLIED HERE <<<<<<<<<<<<<<<<<<<<
           className={`mx-auto mt-4 rounded-full shadow-xl overflow-visible 
-                     bg-white backdrop-blur-md border-2 border-[${BRAND_ORANGE}]`} 
+                     bg-white backdrop-blur-md border-2 border-[${BRAND_ORANGE}]`}
         >
           {/* Adjusted padding/height for the pill shape content */}
           <div className="px-6 sm:px-6 py-4">
@@ -207,7 +215,7 @@ const Navbar = () => {
               </motion.div>
 
               {/* 2. Desktop Nav Group (Right Side) */}
-              <div className="hidden md:flex items-center space-x-4 lg:space-x-8"> 
+              <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
                 {navItems.map((item) => (
                   <NavLink key={item.name} item={item} isMobile={false} />
                 ))}
@@ -226,15 +234,13 @@ const Navbar = () => {
                     if (isOpen) setDropdownOpen(false);
                   }}
                   className={`p-2 focus:outline-none transition duration-300 rounded-full ${
-                    isOpen ?
-                      `bg-[${BRAND_GRAY_HOVER}] text-[${BRAND_ORANGE}]`
-                    : `text-[${BRAND_BLACK_TEXT}] hover:bg-[${BRAND_GRAY_HOVER}]`
+                    isOpen
+                      ? `bg-[${BRAND_GRAY_HOVER}] text-[${BRAND_ORANGE}]`
+                      : `text-[${BRAND_BLACK_TEXT}] hover:bg-[${BRAND_GRAY_HOVER}]`
                   }`}
                   aria-label="Toggle menu"
                 >
-                  {isOpen ?
-                    <FiX size={24} />
-                  : <FiMenu size={24} />}
+                  {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                 </button>
               </motion.div>
             </div>

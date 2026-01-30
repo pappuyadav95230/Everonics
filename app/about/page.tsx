@@ -15,13 +15,16 @@ import {
   Smartphone,
 } from "lucide-react";
 
+import { FaClock, FaUsers, FaTrophy, FaBox } from "react-icons/fa";
+import Testimonial from "@/compoents/Testimonial";
+
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - Enhanced Professional Design */}
       <section className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-screen flex items-center">
         {/* Professional Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-orange via-brand-orange/90 to-[#e55a2b]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f26b36] to-orange-600"></div>
 
         {/* Enhanced Background Elements for Professional Depth */}
         <div className="absolute inset-0 z-0">
@@ -72,12 +75,14 @@ const AboutPage = () => {
       {/* Trust Indicators - Professional Card Design */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="max-w-8xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Experience Card */}
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+                <div className="flex justify-center mb-4">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#f26b36] to-black flex items-center justify-center group-hover:from-black group-hover:to-[#f26b36] transition-all duration-300">
+                    <FaClock className="h-6 w-6 text-white" />
+                  </div>
                 </div>
                 <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
                   Experience
@@ -88,9 +93,11 @@ const AboutPage = () => {
               </div>
 
               {/* Clients Card */}
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+                <div className="flex justify-center mb-4">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#f26b36] to-black flex items-center justify-center group-hover:from-black group-hover:to-[#f26b36] transition-all duration-300">
+                    <FaUsers className="h-6 w-6 text-white" />
+                  </div>
                 </div>
                 <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
                   Clients
@@ -101,9 +108,11 @@ const AboutPage = () => {
               </div>
 
               {/* Recognition Card */}
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+                <div className="flex justify-center mb-4">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#f26b36] to-black flex items-center justify-center group-hover:from-black group-hover:to-[#f26b36] transition-all duration-300">
+                    <FaTrophy className="h-6 w-6 text-white" />
+                  </div>
                 </div>
                 <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
                   Recognition
@@ -113,9 +122,12 @@ const AboutPage = () => {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-4 h-4 bg-brand-orange rounded-full animate-pulse"></div>
+              {/* Products Card */}
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+                <div className="flex justify-center mb-4">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#f26b36] to-black flex items-center justify-center group-hover:from-black group-hover:to-[#f26b36] transition-all duration-300">
+                    <FaBox className="h-6 w-6 text-white" />
+                  </div>
                 </div>
                 <h3 className="text-center text-gray-900 font-bold text-lg mb-2">
                   Products
@@ -129,7 +141,7 @@ const AboutPage = () => {
         </div>
       </section>
       {/* About Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-20 bg-gradient-to-br from-gray-200 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Side: Image */}
@@ -280,16 +292,17 @@ const AboutPage = () => {
 
             <div className="text-center max-w-3xl mx-auto">
               <div className="inline-block w-12 h-1 bg-gradient-to-r from-[#f26b36] to-black mb-6"></div>
+
+              <h2
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-8"
+                style={{ fontFamily: "'Noto Serif', serif", fontWeight: 700 }}
+              >
+                Why People Choose Us?
+              </h2>
               <p className="text-gray-800 text-lg md:text-xl font-medium mb-4">
                 At Everonic Solutions, we understand that choosing the right
                 agency for your needs is crucial.
               </p>
-              <h3
-                className="text-white text-2xl md:text-3xl font-bold"
-                style={{ fontFamily: "'Noto Serif', serif", fontWeight: 600 }}
-              >
-                Here's why people trust and choose us:
-              </h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
