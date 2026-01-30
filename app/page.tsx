@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { RefreshCw, Globe, Smartphone } from "lucide-react";
 import React from "react";
 import Aboutsection from "@/compoents/AboutSection";
+import CtaSection from "@/compoents/CtaSection";
 
 // --- Type Definitions for Services (Unchanged) ---
 interface Service {
@@ -97,6 +98,8 @@ const HomePage: NextPage = () => {
         
       </main>
       <Aboutsection />
+
+      <CtaSection />
     </div>
   );
 };
