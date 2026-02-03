@@ -46,13 +46,13 @@ const OurRegistrations = () => {
           </p>
         </div>
 
-        {/* Five Images in Single Row */}
+        {/* Five Images in Responsive Layout */}
         <div className="w-full py-6">
-          <div className="flex justify-between items-center w-full gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center w-full gap-4 sm:gap-6">
             {registrations.map((item) => (
               <div
                 key={item.id}
-                className="flex-1 flex items-center justify-center min-h-[80px] max-h-[120px]"
+                className="w-full sm:flex-1 flex items-center justify-center min-h-[80px] max-h-[120px]"
               >
                 <div className="w-full h-full flex items-center justify-center bg-white rounded-lg shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300 p-2">
                   <Image

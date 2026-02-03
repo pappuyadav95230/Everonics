@@ -94,7 +94,9 @@ const Footer = () => {
   ];
 
   const handleWhatsAppClick = () => {
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
     window.open(url, "_blank");
   };
 
@@ -363,21 +365,13 @@ const Footer = () => {
                         aria-label={social.name}
                       >
                         <div
-                          className="w-full h-12 bg-white/5 rounded-xl flex items-center justify-center group-hover:shadow-lg transition-all duration-300"
+                          className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center group-hover:shadow-lg transition-all duration-300"
                           style={{ backgroundColor: social.color + "20" }}
                         >
-                          <div className="flex items-center space-x-2">
-                            <Icon
-                              className="w-5 h-5"
-                              style={{ color: social.color }}
-                            />
-                            <span
-                              className="text-sm font-medium"
-                              style={{ color: social.color }}
-                            >
-                              {social.name}
-                            </span>
-                          </div>
+                          <Icon
+                            className="w-6 h-6"
+                            style={{ color: social.color }}
+                          />
                         </div>
                         <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                           Visit our {social.name}
