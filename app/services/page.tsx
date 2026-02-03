@@ -113,7 +113,7 @@ const ServicePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section - Enhanced Professional Design */}
-      <section className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-screen flex items-center">
+      <section className="pt-24 pb-16 sm:pt-32 sm:pb-20 relative overflow-hidden min-h-[60vh] flex items-center">
         {/* Professional Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#f26b36] to-orange-600"></div>
 
@@ -130,19 +130,19 @@ const ServicePage = () => {
             {/* Main Heading - Two Line Layout */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-tight mb-8 drop-shadow-lg">
               <span className="block mb-3">We empower your business with</span>
-              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white">
+              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900">
                 effective solutions
               </span>
             </h1>
 
             {/* Subheading - Enhanced Professional Copy */}
-            <p className="mt-8 text-xl sm:text-2xl lg:text-3xl text-white/95 max-w-7xl mx-auto leading-relaxed font-medium drop-shadow-md">
+            <p className="mt-6 text-xl sm:text-2xl lg:text-3xl text-white/95 max-w-7xl mx-auto leading-relaxed font-medium drop-shadow-md">
               Our comprehensive services are designed to drive your business
               forward and transform your digital landscape.
             </p>
 
             {/* Call to Action Buttons - Enhanced Professional Design */}
-            <div className="mt-16 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
+            <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
               {/* Primary CTA - Professional White Button with Shadow */}
               <a
                 href="#service"

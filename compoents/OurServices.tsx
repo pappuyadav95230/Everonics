@@ -25,15 +25,85 @@ interface ServiceItem {
 }
 
 interface OurServicesProps {
-  services: ServiceItem[];
+  services?: ServiceItem[];
   title?: string;
   subtitle?: string;
 }
 
+// Default services data
+const defaultServices: ServiceItem[] = [
+  {
+    title: "Mobile Applications",
+    description:
+      "With the booming mobile/smart phone industry, your presence on a mobile phone is just as essential and we make that happen by creating beautifully designed mobile applications that offer a friendly user experience for your customers.",
+    features: [
+      "iOS & Android Development",
+      "User-Centered Design",
+      "Cross-Platform Solutions",
+      "App Store Optimization",
+    ],
+  },
+  {
+    title: "Web & Social Applications",
+    description:
+      "Build a powerful online presence with our comprehensive web development services. Whether you need a stunning website or a robust e-commerce platform, Everonic Solutions delivers responsive, visually appealing, and SEO-friendly websites that drive engagement and conversions.",
+    features: [
+      "Full-Stack Development",
+      "E-commerce Solutions",
+      "Content Management Systems",
+      "API Integration",
+    ],
+  },
+  {
+    title: "Responsive Web Design",
+    description:
+      "Responsive web design allows your website will look great and function flawlessly to adapt an optimal experience on any device like desktop computer, laptop, tablet or smartphone.",
+    features: [
+      "Mobile-First Approach",
+      "Cross-Browser Compatibility",
+      "Performance Optimization",
+      "Accessibility Standards",
+    ],
+  },
+  {
+    title: "Search Engine Optimization",
+    description:
+      "Enhance your visibility and attract more organic traffic with our SEO expertise. Our team uses proven strategies and the latest tools to optimize your website, improve your search rankings, and ensure your business reaches its target audience effectively.",
+    features: [
+      "Keyword Research",
+      "On-Page Optimization",
+      "Link Building",
+      "Performance Analytics",
+    ],
+  },
+  {
+    title: "Digital Marketing",
+    description:
+      "Our digital marketing services include search engine optimization, social media marketing, email marketing, and more. We use a data-driven approach to create effective marketing campaigns that generate leads and drive conversions for our clients.",
+    features: [
+      "Social Media Strategy",
+      "Email Marketing Campaigns",
+      "PPC Advertising",
+      "Analytics & Reporting",
+    ],
+  },
+  {
+    title: "Internship and Training",
+    description:
+      "At Everonic Solutions, we believe in nurturing talent and providing opportunities for growth and development. Our internship and training programs are designed to equip aspiring professionals with the skills, knowledge, and hands-on experience needed to succeed in today's competitive job market.",
+    features: [
+      "Hands-on Projects",
+      "Industry Mentorship",
+      "Skill Development",
+      "Career Guidance",
+    ],
+  },
+];
+
 const OurServices: React.FC<OurServicesProps> = ({
-  services,
+  services = defaultServices,
   title = "Our Services",
-  subtitle,
+  subtitle = "Comprehensive digital solutions tailored to drive your business forward",
 }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
