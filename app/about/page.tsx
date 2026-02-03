@@ -16,8 +16,11 @@ import {
 } from "lucide-react";
 
 import { FaClock, FaUsers, FaTrophy, FaBox } from "react-icons/fa";
-import Testimonial from "@/compoents/Testimonial";
+
 import FeaturesSection from "@/compoents/FeaturesSection";
+import CtaSection from "@/compoents/CtaSection";
+
+import OurRegistrations from "@/compoents/OurRegistrations";
 
 const AboutPage = () => {
   return (
@@ -141,6 +144,7 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+
       {/* About Section */}
       <section className="py-20 bg-gradient-to-br from-gray-200 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -246,9 +250,10 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
+      <OurRegistrations />
       {/* Features Section */}
       <FeaturesSection />
+      <CtaSection />
     </div>
   );
 };

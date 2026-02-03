@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import Testimonial from "../../compoents/Testimonial";
+import TestimonialSection from "../../compoents/TestimonialSection";
 import OurServices from "../../compoents/OurServices";
 
 const ServicePage = () => {
@@ -75,41 +75,6 @@ const ServicePage = () => {
     },
   ];
 
-  const testimonials = [
-    {
-      quote:
-        "Everonic solutions has proven to be an excellent consulting firm over the past year. They respond professionally to the changing business environment and help successfully implement the coastal/offshore model. We truly appreciate their dedication and hard work.",
-      author: "Anushk Singh",
-      image: "/img/testimonial-4.jpg",
-      role: "Business Client",
-      rating: 5,
-    },
-    {
-      quote:
-        "I was pleasantly surprised at Everonic solutions's work as they brought my vision to reality. It was definitely a great experience for me, they helped me reduce the learning curve. I would like to summarize my experience with Everonic solutions, it will be my first choice in my future endeavors.",
-      author: "Durgesh Tiwari",
-      image: "/img/testimonial-2.jpg",
-      role: "Project Manager",
-      rating: 5,
-    },
-    {
-      quote:
-        "One of the greatest qualities of Everonic solutions that I appreciate is their ability to take complete ownership of a project and execute the plan. The level of detail and support they devote to their customers is just fantastic. High quality interactions are the trademark of Everonic solutions Minds.",
-      author: "Aditya Yadav",
-      image: "/img/emptyManImg.jpg",
-      role: "Tech Lead",
-      rating: 5,
-    },
-    {
-      quote:
-        "Everonic solutions is a significant player in bringing about digital transformation and providing leadership and innovation in the field of technology.<br><br> i love there work.",
-      author: "Rohan Gupta",
-      image: "/img/emptyManImg.jpg",
-      role: "CTO",
-      rating: 5,
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section - Enhanced Professional Design */}
@@ -169,11 +134,7 @@ const ServicePage = () => {
         title="Our Services"
         subtitle="Comprehensive digital solutions tailored to drive your business forward"
       />
-      <Testimonial
-        testimonials={testimonials}
-        title="What our clients say about our services"
-        subtitle="Discover why businesses trust Everonic Solutions for their digital transformation needs"
-      />
+      <TestimonialSection />
     </div>
   );
 };

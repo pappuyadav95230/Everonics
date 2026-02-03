@@ -5,6 +5,9 @@ import Aboutsection from "@/compoents/AboutSection";
 import CtaSection from "@/compoents/CtaSection";
 import OurServices from "@/compoents/OurServices";
 import FeaturesSection from "@/compoents/FeaturesSection";
+import OurRegistrations from "@/compoents/OurRegistrations";
+import TestimonialSection from "@/compoents/TestimonialSection";
+
 // --- Type Definitions for Services (Unchanged) ---
 interface Service {
   name: string;
@@ -103,10 +106,11 @@ const HomePage: NextPage = () => {
         <HeroSection />
       </main>
       <Aboutsection />
+      <OurRegistrations />
       <OurServices />
       <CtaSection />
       <FeaturesSection />
-      
+      <TestimonialSection />
     </div>
   );
 };

@@ -89,7 +89,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-[#f26b36] via-orange-500 to-[#f26b36] relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-r from-[#f26b36] via-orange-500 to-[#f26b36] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
@@ -106,7 +106,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
           className="max-w-7xl mx-auto"
         >
           {/* Header Section */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-12">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -125,7 +125,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
 
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg"
+              className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg"
             >
               {title}
             </motion.h2>
@@ -141,69 +141,69 @@ const Testimonial: React.FC<TestimonialProps> = ({
           </motion.div>
 
           {/* Testimonials Carousel */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="overflow-hidden relative px-12">
+          <div className="relative max-w-6xl mx-auto">
+            <div className="overflow-hidden relative px-4">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="flex-shrink-0 w-full px-4">
+                  <div key={index} className="flex-shrink-0 w-full px-2">
                     <motion.div
                       variants={itemVariants}
                       initial="hidden"
                       animate="visible"
                       whileHover={{ y: -5 }}
-                      className="testimonial-item bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 group relative overflow-hidden h-full"
+                      className="testimonial-item bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 group relative overflow-hidden h-full flex flex-col"
                     >
                       {/* Hover effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-[#f26b36]/10 to-orange-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
 
                       <div className="relative z-10 h-full flex flex-col">
                         {/* Quote Icon */}
-                        <div className="flex justify-between items-start mb-6">
-                          <FaQuoteLeft className="h-10 w-10 text-[#f26b36] flex-shrink-0" />
+                        <div className="flex justify-between items-start mb-4 flex-shrink-0">
+                          <FaQuoteLeft className="h-8 w-8 text-[#f26b36] flex-shrink-0" />
 
                           {showRating && (
-                            <div className="flex space-x-1">
+                            <div className="flex space-x-1 flex-shrink-0">
                               {renderStars(testimonial.rating)}
                             </div>
                           )}
                         </div>
 
-                        {/* Quote Text */}
-                        <div className="flex-grow">
+                        {/* Quote Text - Fixed height container */}
+                        <div className="flex-grow overflow-hidden">
                           <p
-                            className="text-gray-800 leading-relaxed text-lg mb-8 font-medium text-justify"
+                            className="text-gray-800 leading-relaxed text-lg font-medium text-justify line-clamp-6"
                             dangerouslySetInnerHTML={{
                               __html: testimonial.quote,
                             }}
                           ></p>
                         </div>
 
-                        {/* Author Info */}
-                        <div className="flex flex-col items-center mt-auto pt-4">
-                          <div className="relative mb-4">
+                        {/* Author Info - Fixed at bottom */}
+                        <div className="flex flex-col items-center mt-4 pt-4 flex-shrink-0">
+                          <div className="relative mb-3">
                             {testimonial.image ? (
                               <img
                                 src={testimonial.image}
                                 alt={testimonial.author}
-                                className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-xl"
+                                className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
                               />
                             ) : (
-                              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#f26b36] to-black flex items-center justify-center shadow-xl border-4 border-white">
-                                <span className="text-white font-bold text-2xl">
+                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#f26b36] to-black flex items-center justify-center shadow-lg border-4 border-white">
+                                <span className="text-white font-bold text-xl">
                                   {testimonial.author.charAt(0)}
                                 </span>
                               </div>
                             )}
 
                             {/* Online indicator */}
-                            <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
                           </div>
 
                           <div className="text-center">
-                            <h4 className="font-bold text-gray-900 text-xl group-hover:text-[#f26b36] transition-colors duration-300">
+                            <h4 className="font-bold text-gray-900 text-lg group-hover:text-[#f26b36] transition-colors duration-300">
                               {testimonial.author}
                             </h4>
                             {testimonial.role && (
@@ -260,3 +260,20 @@ const Testimonial: React.FC<TestimonialProps> = ({
 };
 
 export default Testimonial;
+
+// Add custom CSS for line clamp
+const style = `
+  .line-clamp-6 {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+`;
+
+// Inject the style
+if (typeof document !== "undefined") {
+  const styleElement = document.createElement("style");
+  styleElement.textContent = style;
+  document.head.appendChild(styleElement);
+}
