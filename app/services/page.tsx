@@ -78,7 +78,7 @@ const ServicePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section - Enhanced Professional Design */}
-      <section className="pt-24 pb-16 sm:pt-32 sm:pb-20 relative overflow-hidden min-h-[60vh] flex items-center">
+      <section className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-[70vh] flex items-center">
         {/* Professional Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#f26b36] to-orange-600"></div>
 
