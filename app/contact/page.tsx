@@ -78,12 +78,6 @@ const ContactPage = () => {
 
   const contactInfo = [
     {
-      icon: MapPin,
-      title: "Our Location",
-      content: "T-4, Sanjay Gandhi Puram, Lucknow, UP 226016",
-      highlight: "Lucknow, India",
-    },
-    {
       icon: Phone,
       title: "Call Us",
       content: "+91 9984024365",
@@ -106,7 +100,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Hero Section - Responsive */}
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28 bg-gradient-to-r from-[#f26b36] to-orange-600 text-white">
+      <section className="relative overflow-hidden py-24 sm:py-28 md:py-36 lg:py-40 bg-gradient-to-r from-[#f26b36] to-orange-600 text-white">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/15 to-transparent"></div>
@@ -123,11 +117,12 @@ const ContactPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 sm:mb-6">
-                Get In Touch
+                Let's Build Something Amazing Together
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Have a project in mind? Let's discuss how we can help transform
-                your business with innovative IT solutions.
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+                Ready to transform your ideas into reality? Our expert team is
+                standing by to help you achieve extraordinary results through
+                innovative technology solutions.
               </p>
             </motion.div>
           </div>
@@ -220,24 +215,29 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="bg-white rounded-2xl shadow-xl p-8 sm:p-10 border border-gray-100"
             >
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
                 Send us a Message
               </h3>
+              <p className="text-gray-600 text-sm mb-8">
+                By submitting this form, you give us permission to contact you
+                regarding your inquiry.
+              </p>
 
               {isSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
+                  className="text-center py-12 sm:py-16"
                 >
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle className="w-10 h-10 text-green-600" />
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8">
+                    <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-green-600" />
                   </div>
-                  <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                    Message Sent Successfully!
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Thank You!
                   </h4>
-                  <p className="text-gray-600">
-                    Thank you for contacting us. We'll get back to you soon.
+                  <p className="text-gray-600 text-lg sm:text-xl max-w-md mx-auto leading-relaxed">
+                    Your message has been sent successfully. Our team will
+                    connect with you soon to discuss your project.
                   </p>
                 </motion.div>
               ) : (
@@ -369,6 +369,12 @@ const ContactPage = () => {
                       </>
                     )}
                   </motion.button>
+
+                  <p className="text-gray-500 text-xs text-center mt-4">
+                    I authorise Everonics Solution & its representatives to
+                    contact me with updates and notifications via
+                    Email/SMS/What'sApp/Call. This will override DND/NDNC.
+                  </p>
                 </form>
               )}
             </motion.div>
