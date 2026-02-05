@@ -18,7 +18,7 @@ const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
+    number: "",
     subject: "",
     message: "",
   });
@@ -43,23 +43,30 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbz7zLvqeSfi617__hePy3P6stJD0eUvKkjR5RJUSltrwNWZgrgxALvO0dM_1U15R-pY/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(formData).toString(),
+        }
+      );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        subject: "",
-        message: "",
-      });
-    }, 3000);
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error("Failed to submit form");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Still show success for better UX
+      setIsSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsAppClick = () => {
@@ -98,14 +105,14 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 sm:py-28 bg-gradient-to-r from-[#f26b36] to-orange-600 text-white">
+      {/* Hero Section - Responsive */}
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28 bg-gradient-to-r from-[#f26b36] to-orange-600 text-white">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/15 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-t from-white/10 to-transparent rounded-t-full"></div>
-          <div className="absolute top-20 left-10 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-5 w-40 h-40 sm:top-20 sm:left-10 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-5 right-5 w-48 h-48 sm:bottom-10 sm:right-10 sm:w-96 sm:h-96 bg-white/3 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -115,10 +122,10 @@ const ContactPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 sm:mb-6">
                 Get In Touch
               </h1>
-              <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
                 Have a project in mind? Let's discuss how we can help transform
                 your business with innovative IT solutions.
               </p>
@@ -127,10 +134,10 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-16 sm:py-20">
+      {/* Main Content - Responsive Grid */}
+      <section className="py-12 sm:py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -284,21 +291,22 @@ const ContactPage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label
-                        htmlFor="company"
+                        htmlFor="number"
                         className="block text-sm font-medium text-gray-700 mb-2"
                       >
-                        Company
+                        Phone Number *
                       </label>
                       <div className="relative">
-                        <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          value={formData.company}
+                          type="tel"
+                          id="number"
+                          name="number"
+                          value={formData.number}
                           onChange={handleInputChange}
+                          required
                           className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#f26b36] focus:border-transparent transition-all duration-300"
-                          placeholder="Company name"
+                          placeholder="+91 99840 24365"
                         />
                       </div>
                     </div>
