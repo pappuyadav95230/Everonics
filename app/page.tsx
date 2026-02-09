@@ -36,9 +36,6 @@ const servicesData: Service[] = [
   },
 ];
 
-// ------------------------------------
-// COMPONENTS
-// ------------------------------------
 
 /**
  * Hero Section Component - Professional Design with Brand Orange Background
