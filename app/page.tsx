@@ -44,12 +44,12 @@ const HeroSection: React.FC = () => (
   <section
     id="home"
     className="pt-32 pb-24 sm:pt-40 sm:pb-32 relative overflow-hidden min-h-screen flex items-center
-               bg-gradient-to-r from-[#f26b36] to-orange-600"
+               bg-linear-to-r from-[#f26b36] to-orange-600"
   >
     {/* Enhanced Background Elements for Professional Depth */}
     <div className="absolute inset-0 z-0">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/15 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-t from-white/10 to-transparent rounded-t-full"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-white/15 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-linear-to-t from-white/10 to-transparent rounded-t-full"></div>
       <div className="absolute top-20 left-10 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
     </div>
