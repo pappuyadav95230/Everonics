@@ -7,9 +7,6 @@ import {
   Phone,
   MapPin,
   Home,
-  Facebook,
-  Instagram,
-  Linkedin,
   ArrowRight,
   MessageSquare,
   Globe,
@@ -25,6 +22,7 @@ import {
   ExternalLink,
   MessageCircle,
 } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,19 +34,19 @@ const Footer = () => {
     {
       name: "Facebook",
       href: "https://www.facebook.com/everonicsolutions/",
-      icon: Facebook,
+      icon: FaFacebookF,
       color: "#1877F2",
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/everonic_solutions/",
-      icon: Instagram,
+      icon: FaInstagram,
       color: "#E4405F",
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/company/everonic-solution",
-      icon: Linkedin,
+      icon: FaLinkedinIn,
       color: "#0A66C2",
     },
   ];
@@ -78,12 +76,7 @@ const Footer = () => {
       target: "_blank",
       icon: Target,
     },
-    {
-      name: "RoadTransit - AVL System",
-      href: "https://roadtransit.in/signin",
-      target: "_blank",
-      icon: Truck,
-    },
+
   ];
 
   const services = [
