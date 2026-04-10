@@ -28,9 +28,7 @@ const navItems: NavItem[] = [
     name: "Products",
     href: "/products",
     dropdown: [
-      { name: "Location Tracker", href: "/products/location-tracker" },
-      { name: "Road Transit", href: "/products/road-transit" },
-      { name: "OBEO", href: "/products/obeo" },
+      { name: "Location Tracker", href: "https://locationtrack.in/" },
     ],
   },
   { name: "Contact", href: "/contact" },
@@ -76,11 +74,10 @@ const Navbar = () => {
     const isDropdown = !!item.dropdown;
 
     // Enhanced base classes with modern styling
-    const baseClasses = `transition-all duration-300 font-semibold whitespace-nowrap text-center px-5 py-2.5 rounded-full ${
-      isActive
+    const baseClasses = `transition-all duration-300 font-semibold whitespace-nowrap text-center px-5 py-2.5 rounded-full ${isActive
         ? `text-white bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] shadow-lg`
         : `text-[${BRAND_BLACK_TEXT}] hover:text-white hover:bg-gradient-to-r hover:from-[${BRAND_ORANGE}] hover:to-[${BRAND_DARK_ORANGE}] hover:shadow-md`
-    }`;
+      }`;
 
     // Dropdown Logic
     if (isDropdown) {
@@ -92,9 +89,8 @@ const Navbar = () => {
                 setDropdownOpen(!dropdownOpen);
               }
             }}
-            className={`flex items-center justify-center ${
-              isMobile ? "py-2 w-full" : "py-0"
-            } ${baseClasses}`}
+            className={`flex items-center justify-center ${isMobile ? "py-2 w-full" : "py-0"
+              } ${baseClasses}`}
             style={{
               color: isActive ? BRAND_WHITE : BRAND_BLACK_TEXT,
               background: isActive
@@ -106,69 +102,66 @@ const Navbar = () => {
           >
             {item.name}
             <FiChevronDown
-              className={`ml-2 transition-transform duration-300 ${
-                dropdownOpen ? "rotate-180" : ""
-              }`}
+              className={`ml-2 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""
+                }`}
             />
           </button>
           {/* DROPDOWN CONTENT */}
           <AnimatePresence>
             {isMobile
               ? // Mobile Dropdown (Indented, inside the mobile menu)
-                isOpen &&
-                dropdownOpen &&
-                item.dropdown && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="pl-4 space-y-2 mt-1"
-                  >
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className={`block px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg mx-2 ${
-                          pathname === subItem.href
-                            ? `text-white bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}]`
-                            : `text-[${BRAND_BLACK_TEXT}]/80 hover:text-white hover:bg-gradient-to-r hover:from-[${BRAND_ORANGE}] hover:to-[${BRAND_DARK_ORANGE}]`
+              isOpen &&
+              dropdownOpen &&
+              item.dropdown && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="pl-4 space-y-2 mt-1"
+                >
+                  {item.dropdown.map((subItem) => (
+                    <Link
+                      key={subItem.name}
+                      href={subItem.href}
+                      className={`block px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg mx-2 ${pathname === subItem.href
+                          ? `text-white bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}]`
+                          : `text-[${BRAND_BLACK_TEXT}]/80 hover:text-brand-orange hover:bg-orange-50`
                         }`}
-                        onClick={closeAllMenus}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )
+                      onClick={closeAllMenus}
+                    >
+                      {subItem.name}
+                    </Link>
+                  ))}
+                </motion.div>
+              )
               : // Desktop Dropdown (OUTSIDE the nav pill)
-                dropdownOpen &&
-                item.dropdown && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-52 bg-white rounded-xl shadow-2xl py-2 z-50 border border-gray-100"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
-                  >
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className={`block px-5 py-3 text-sm font-medium text-center transition-all duration-200 hover:bg-gradient-to-r hover:from-[${BRAND_ORANGE}] hover:to-[${BRAND_DARK_ORANGE}] hover:text-white rounded-lg mx-2 ${
-                          pathname === subItem.href
-                            ? `bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] text-white`
-                            : `text-[${BRAND_BLACK_TEXT}]`
+              dropdownOpen &&
+              item.dropdown && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-52 bg-white rounded-xl shadow-2xl py-2 z-50 border border-gray-100"
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  {item.dropdown.map((subItem) => (
+                    <Link
+                      key={subItem.name}
+                      href={subItem.href}
+                      className={`block px-5 py-3 text-sm font-medium text-center transition-all duration-200 hover:bg-orange-50 hover:text-brand-orange rounded-lg mx-2 ${pathname === subItem.href
+                          ? `bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] text-white`
+                          : `text-[${BRAND_BLACK_TEXT}]`
                         }`}
-                        onClick={closeAllMenus}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
+                      onClick={closeAllMenus}
+                    >
+                      {subItem.name}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
           </AnimatePresence>
         </div>
       );
@@ -200,11 +193,10 @@ const Navbar = () => {
             damping: 20,
             delay: 0.1,
           }}
-          className={`mx-auto mt-4 rounded-full shadow-2xl overflow-visible transition-all duration-300 ${
-            scrolled
+          className={`mx-auto mt-4 rounded-full shadow-2xl overflow-visible transition-all duration-300 ${scrolled
               ? `bg-white/90 backdrop-blur-xl border-2 border-[${BRAND_ORANGE}]/30`
               : `bg-white backdrop-blur-md border-2 border-[${BRAND_ORANGE}]`
-          }`}
+            }`}
           style={{
             boxShadow: scrolled
               ? `0 10px 30px -10px rgba(242, 107, 54, 0.2)`
@@ -254,11 +246,10 @@ const Navbar = () => {
                     setIsOpen(!isOpen);
                     if (isOpen) setDropdownOpen(false);
                   }}
-                  className={`p-3 focus:outline-none transition-all duration-300 rounded-full ${
-                    isOpen
+                  className={`p-3 focus:outline-none transition-all duration-300 rounded-full ${isOpen
                       ? `bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] text-white shadow-lg`
                       : `text-[${BRAND_BLACK_TEXT}] hover:bg-[${BRAND_GRAY_HOVER}] hover:shadow-md`
-                  }`}
+                    }`}
                   aria-label="Toggle menu"
                 >
                   {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}

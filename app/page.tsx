@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Link from "next/link";
 import { RefreshCw, Globe, Smartphone } from "lucide-react";
 import React from "react";
 import Aboutsection from "@/compoents/AboutSection";
@@ -70,22 +71,22 @@ const HeroSection: React.FC = () => (
       </p>
 
       {/* Call to Action Buttons - Enhanced Professional Design */}
-      <div className="mt-16 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
+      <div className="mt-8 flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
         {/* Primary CTA - Professional White Button with Shadow */}
-        <a
-          href="#services"
+        <Link
+          href="/services"
           className="inline-flex items-center justify-center rounded-2xl border border-transparent bg-white px-12 py-5 text-lg font-bold text-brand-orange shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-brand-orange hover:text-white"
         >
           Explore Our Services
-        </a>
+        </Link>
 
         {/* Secondary CTA - Professional Outline Button */}
-        <a
-          href="#contact"
+        <Link
+          href="/contact"
           className="inline-flex items-center justify-center rounded-2xl border-2 border-white px-12 py-5 text-lg font-bold text-white hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1"
         >
           Start Your Project
-        </a>
+        </Link>
       </div>
     </div>
   </section>
