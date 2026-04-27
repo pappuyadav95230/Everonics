@@ -92,7 +92,7 @@ const AboutPage = () => {
                   Experience
                 </h3>
                 <p className="text-center text-gray-700 font-semibold text-2xl">
-                  15+ Years
+                  5+ Years
                 </p>
               </div>
 
