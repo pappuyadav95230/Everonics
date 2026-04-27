@@ -34,7 +34,7 @@ const TestimonialSection = () => {
     {
       quote:
         "Everonic solutions is a significant player in bringing about digital transformation and providing leadership and innovation in the field of technology.<br><br> i love there work.",
-      author: "Rohan Gupta",
+      author: "Pappu kumar",
       image: "/img/emptyManImg.jpg",
       role: "CTO",
       rating: 5,
