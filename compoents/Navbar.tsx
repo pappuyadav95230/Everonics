@@ -29,6 +29,7 @@ const navItems: NavItem[] = [
     href: "/products",
     dropdown: [
       { name: "Location Tracker", href: "https://locationtrack.in/" },
+      { name: "Road Transit", href: "https://roadtransit.in/" },
     ],
   },
   { name: "Contact", href: "/contact" },
@@ -73,37 +74,34 @@ const Navbar = () => {
     const isActive = isParentActive(item.href) || pathname === item.href;
     const isDropdown = !!item.dropdown;
 
-    // Enhanced base classes with modern styling
-    const baseClasses = `transition-all duration-300 font-semibold whitespace-nowrap text-center px-5 py-2.5 rounded-full ${isActive
-        ? `text-white bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] shadow-lg`
-        : `text-[${BRAND_BLACK_TEXT}] hover:text-white hover:bg-gradient-to-r hover:from-[${BRAND_ORANGE}] hover:to-[${BRAND_DARK_ORANGE}] hover:shadow-md`
-      }`;
+    // Professional styling: left-aligned in mobile, no intense orange pill backgrounds
+    const baseClasses = `transition-all duration-300 font-semibold whitespace-nowrap ${
+      isMobile ? "text-left px-5 py-3 w-full rounded-xl text-lg" : "px-4 py-2 rounded-full text-base"
+    } ${
+      isActive
+        ? "text-[#f26b36] bg-orange-50/50"
+        : "text-[#1A1A1A] hover:text-[#f26b36] hover:bg-orange-50/30"
+    }`;
 
     // Dropdown Logic
     if (isDropdown) {
       return (
-        <div className="relative group">
+        <div className={`relative group ${isMobile ? "w-full" : ""}`}>
           <button
             onClick={() => {
               if (isMobile) {
                 setDropdownOpen(!dropdownOpen);
               }
             }}
-            className={`flex items-center justify-center ${isMobile ? "py-2 w-full" : "py-0"
-              } ${baseClasses}`}
-            style={{
-              color: isActive ? BRAND_WHITE : BRAND_BLACK_TEXT,
-              background: isActive
-                ? `linear-gradient(to right, ${BRAND_ORANGE}, ${BRAND_DARK_ORANGE})`
-                : "transparent",
-            }}
+            className={`flex items-center justify-between ${isMobile ? "w-full" : ""} ${baseClasses}`}
             onMouseEnter={() => !isMobile && setDropdownOpen(true)}
             onMouseLeave={() => !isMobile && setDropdownOpen(false)}
           >
-            {item.name}
+            <span>{item.name}</span>
             <FiChevronDown
-              className={`ml-2 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""
-                }`}
+              className={`ml-1 transition-transform duration-300 ${
+                dropdownOpen ? "rotate-180" : ""
+              }`}
             />
           </button>
           {/* DROPDOWN CONTENT */}
@@ -118,16 +116,17 @@ const Navbar = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="pl-4 space-y-2 mt-1"
+                  className="pl-4 space-y-1 mt-1 mb-2 overflow-hidden"
                 >
                   {item.dropdown.map((subItem) => (
                     <Link
                       key={subItem.name}
                       href={subItem.href}
-                      className={`block px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg mx-2 ${pathname === subItem.href
-                          ? `text-white bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}]`
-                          : `text-[${BRAND_BLACK_TEXT}]/80 hover:text-brand-orange hover:bg-orange-50`
-                        }`}
+                      className={`block px-5 py-2.5 text-base font-medium transition-all duration-200 rounded-lg ${
+                        pathname === subItem.href
+                          ? "text-[#f26b36] bg-orange-50"
+                          : "text-[#1A1A1A]/80 hover:text-[#f26b36] hover:bg-orange-50/50"
+                      }`}
                       onClick={closeAllMenus}
                     >
                       {subItem.name}
@@ -151,9 +150,9 @@ const Navbar = () => {
                     <Link
                       key={subItem.name}
                       href={subItem.href}
-                      className={`block px-5 py-3 text-sm font-medium text-center transition-all duration-200 hover:bg-orange-50 hover:text-brand-orange rounded-lg mx-2 ${pathname === subItem.href
-                          ? `bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] text-white`
-                          : `text-[${BRAND_BLACK_TEXT}]`
+                      className={`block px-5 py-3 text-sm font-medium text-center transition-all duration-200 hover:bg-orange-50 hover:text-[#f26b36] rounded-lg mx-2 ${pathname === subItem.href
+                          ? `text-[#f26b36] bg-orange-50`
+                          : `text-[#1A1A1A]`
                         }`}
                       onClick={closeAllMenus}
                     >
@@ -171,8 +170,7 @@ const Navbar = () => {
     return (
       <Link
         href={item.href}
-        className={`${baseClasses} ${isMobile ? "block py-2 w-full" : ""}`}
-        style={{ color: isActive ? BRAND_ORANGE : BRAND_BLACK_TEXT }}
+        className={`${baseClasses} ${isMobile ? "block" : ""}`}
         onClick={closeAllMenus}
       >
         {item.name}
@@ -194,8 +192,8 @@ const Navbar = () => {
             delay: 0.1,
           }}
           className={`mx-auto mt-4 rounded-full shadow-2xl overflow-visible transition-all duration-300 ${scrolled
-              ? `bg-white/90 backdrop-blur-xl border-2 border-[${BRAND_ORANGE}]/30`
-              : `bg-white backdrop-blur-md border-2 border-[${BRAND_ORANGE}]`
+              ? `bg-white/90 backdrop-blur-xl border-2 border-[#f26b36]/30`
+              : `bg-white backdrop-blur-md border-2 border-[#f26b36]`
             }`}
           style={{
             boxShadow: scrolled
@@ -222,16 +220,22 @@ const Navbar = () => {
                       alt="Everonic Solutions Logo"
                       className="h-14 w-auto transition-transform duration-300 hover:scale-105"
                     />
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] rounded-full border-2 border-white"></div>
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-[#f26b36] to-[#d9531e] rounded-full border-2 border-white"></div>
                   </div>
                 </Link>
               </motion.div>
 
               {/* 2. Desktop Nav Group (Right Side) */}
-              <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
+              <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
                 {navItems.map((item) => (
                   <NavLink key={item.name} item={item} isMobile={false} />
                 ))}
+                <a
+                  href="tel:+919984024365"
+                  className="ml-2 lg:ml-4 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#f26b36] to-[#d9531e] text-white font-bold tracking-wide shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center"
+                >
+                  +91 9984024365
+                </a>
               </div>
 
               {/* 3. Mobile menu toggle (Far Right) */}
@@ -247,8 +251,8 @@ const Navbar = () => {
                     if (isOpen) setDropdownOpen(false);
                   }}
                   className={`p-3 focus:outline-none transition-all duration-300 rounded-full ${isOpen
-                      ? `bg-gradient-to-r from-[${BRAND_ORANGE}] to-[${BRAND_DARK_ORANGE}] text-white shadow-lg`
-                      : `text-[${BRAND_BLACK_TEXT}] hover:bg-[${BRAND_GRAY_HOVER}] hover:shadow-md`
+                      ? `bg-gradient-to-r from-[#f26b36] to-[#d9531e] text-white shadow-lg`
+                      : `text-[#1A1A1A] hover:bg-[#F0F0F0] hover:shadow-md`
                     }`}
                   aria-label="Toggle menu"
                 >
@@ -267,7 +271,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -20 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden mx-auto mt-3 w-full max-w-md bg-white/95 backdrop-blur-xl shadow-2xl rounded-2xl border border-[${BRAND_ORANGE}]/20 overflow-hidden"
+              className="md:hidden mx-auto mt-3 w-full max-w-md bg-white/95 backdrop-blur-xl shadow-2xl rounded-2xl border border-[#f26b36]/20 overflow-hidden"
               style={{
                 boxShadow: `0 25px 50px -12px rgba(242, 107, 54, 0.25)`,
               }}
@@ -276,6 +280,16 @@ const Navbar = () => {
                 {navItems.map((item) => (
                   <NavLink key={item.name} item={item} isMobile={true} />
                 ))}
+                
+                {/* Mobile Phone Number Button */}
+                <div className="pt-4 mt-2 border-t border-orange-100">
+                  <a 
+                    href="tel:+919984024365"
+                    className="block w-full text-center px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#f26b36] to-[#d9531e] text-white font-bold tracking-wide shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    +91 9984024365
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}
